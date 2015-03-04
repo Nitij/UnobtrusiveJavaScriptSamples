@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    
+    <input id="button1" type="button" value="Button1" />
+    <input id="button2" type="button" value="Button2"/>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', WireUpEvents);
+
+        function WireUpEvents() {
+            var button1 = document.getElementById('button1'),
+                button2 = document.getElementById('button2');
+
+            button1.addEventListener('click', button1_Click);
+            button2.addEventListener('click', button2_Click);
+        }
+
+        function button1_Click() {
+            alert('Button1 was Clicked!');
+            return false;
+        }
+
+        function button2_Click() {
+            alert('Button2 was Clicked!');
+        }
+    </script>
+</body>
+</html>

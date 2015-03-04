@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style type ="text/css">
+        .RedBox{
+            padding:2px;
+            border:2px solid red;
+            border-radius:5px;
+        }
+        .BlackBox{
+            padding:2px;
+            border:2px solid black;
+            border-radius:5px;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <input id="txtFistName" type="text" placeholder="First Name" class="RedBox" /> &nbsp; 
+    <input id="txtLastName" type="text" placeholder="Last Name" class="RedBox" />
+    <br /><br />
+    <input id="txtEmail" type="text" placeholder="Email Id" class="RedBox" />
+    <br /><br />
+    <input id="txtPhone" type="text" placeholder="Phone" class="RedBox" />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', onLoad);
+
+        function onLoad() {
+            var txtFirstName = document.getElementById('txtFistName'),
+                txtLastName = document.getElementById('txtLastName'),
+                txtEmail = document.getElementById('txtEmail'),
+                txtPhone = document.getElementById('txtPhone');
+
+            txtFistName.addEventListener('change', RequiredFieldValidation.bind(txtFistName));
+            txtLastName.addEventListener('change', RequiredFieldValidation.bind(txtLastName));
+            txtEmail.addEventListener('change', RequiredFieldValidation.bind(txtEmail));
+            txtPhone.addEventListener('change', RequiredFieldValidation.bind(txtPhone));
+        }
+
+        function RequiredFieldValidation() {
+            this.className = (this.value.length === 0) ? 'RedBox' : 'BlackBox';
+        }
+    </script>
+</body>
+</html>

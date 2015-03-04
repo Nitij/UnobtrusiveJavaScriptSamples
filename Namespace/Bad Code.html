@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <input type="text" id="txtNumber1" /> &nbsp; <input type="text" id="txtNumber2" />
+    <br /><br />
+
+    <input type="button" value="Add" add/> &nbsp;
+    <input type="button" value="Subtract" subtract/> &nbsp;
+    <input type="button" value="Multiply" multiply/> &nbsp;
+    <input type="button" value="Divide" divide/> &nbsp;
+
+    <br /><br />
+    <input type="text" id="txtResult" />
+    
+    <script>
+        var txtNumber1, txtNumber2, txtResult;
+        document.addEventListener('DOMContentLoaded', onLoad);
+
+        function onLoad() {
+            txtNumber1 = document.getElementById('txtNumber1');
+            txtNumber2 = document.getElementById('txtNumber2');
+            txtResult = document.getElementById('txtResult');
+
+            document.querySelector('[add]').addEventListener('click', add_click);
+            document.querySelector('[subtract]').addEventListener('click', subtract_click);
+            document.querySelector('[multiply]').addEventListener('click', multiply_click);
+            document.querySelector('[divide]').addEventListener('click', divide_click);
+        }
+
+        function calculate(number1, number2, operationType) {
+            var result = 0;
+            switch (operationType.toLowerCase()) {
+                case 'add':
+                    result = number1 + number2;
+                    break;
+                case 'subtract':
+                    result = number1 - number2;
+                    break;
+                case 'multiply':
+                    result = number1 * number2;
+                    break;
+                case 'divide':
+                    result = number1 / number2;
+                    break;
+            }
+            return result;
+        }
+
+        function add_click() {
+            txtResult.value = calculate(parseFloat(txtNumber1.value), parseFloat(txtNumber2.value), 'Add');
+        }
+
+        function subtract_click() {
+            txtResult.value = calculate(parseFloat(txtNumber1.value), parseFloat(txtNumber2.value), 'Subtract');
+        }
+
+        function multiply_click() {
+            txtResult.value = calculate(parseFloat(txtNumber1.value), parseFloat(txtNumber2.value), 'Multiply');
+        }
+
+        function divide_click() {
+            txtResult.value = calculate(parseFloat(txtNumber1.value), parseFloat(txtNumber2.value), 'Divide');
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    Search Engines
+    <br />
+    <a href="http://www.google.com">Google</a> &nbsp;
+    <a href="http://www.search.yahoo.com">Yahoo Search</a> &nbsp;
+    <a href="http://www.bing.com">Bing</a> &nbsp;
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var anchors = document.getElementsByTagName('a');
+            WireupAnchors.bind(null, anchors)();
+        });
+
+        function WireupAnchors(anchors) {
+            anchors = anchors || [];
+
+            for (var i = 0; i < anchors.length; i++) {
+                iterator.call(anchors[i]);
+            }
+
+            function iterator() {
+                this.onclick = function () {
+                    window.open(this.href);
+                    return false;
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>

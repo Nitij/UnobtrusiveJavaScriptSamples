@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style type ="text/css">
+        .RedBox{
+            padding:2px;
+            border:2px solid red;
+            border-radius:5px;
+        }
+        .BlackBox{
+            padding:2px;
+            border:2px solid black;
+            border-radius:5px;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <input id="txtFistName" type="text" placeholder="First Name" class="RedBox" Required/> &nbsp; 
+    <input id="txtLastName" type="text" placeholder="Last Name" class="RedBox" Required/>
+    <br /><br />
+    <input id="txtEmail" type="text" placeholder="Email Id" class="RedBox" Required/>
+    <br /><br />
+    <input id="txtPhone" type="text" placeholder="Phone" class="RedBox" Required/>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', onLoad);
+
+        function onLoad() {
+            var required = document.querySelectorAll('[Required]');
+
+            for (var i = 0; i < required.length; i++) {
+                required[i].addEventListener('change', RequiredFieldValidation.bind(required[i]));
+            }
+        }
+
+        function RequiredFieldValidation() {
+            this.className = (this.value.length === 0) ? 'RedBox' : 'BlackBox';
+        }
+    </script>
+</body>
+</html>

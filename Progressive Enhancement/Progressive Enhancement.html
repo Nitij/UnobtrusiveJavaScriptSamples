@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <input id="button1" type="button" value="Hello" />
+
+    <script>
+        var button1,
+            messages = {'Message1': 'Hello World'};
+
+        document.addEventListener('DOMContentLoaded', onLoad);
+
+        function onLoad(){
+            button1 = document.getElementById('button1');
+            button1.addEventListener('click', button_click.bind(messages));
+                
+        }
+
+        function button_click() {
+            alert(this.Message1);
+        }
+
+        //If Function.prototype.bind is not available then create a custom bind function.
+        //Polyfill: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+        if (!Function.prototype.bind) {
+            Function.prototype.bind = function (oThis) {
+                if (typeof this !== 'function') {
+                    // closest thing possible to the ECMAScript 5
+                    // internal IsCallable function
+                    throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+                }
+
+                var aArgs = Array.prototype.slice.call(arguments, 1),
+                    fToBind = this,
+                    fNOP = function () { },
+                    fBound = function () {
+                        return fToBind.apply(this instanceof fNOP && oThis
+                               ? this
+                               : oThis,
+                               aArgs.concat(Array.prototype.slice.call(arguments)));
+                    };
+
+                fNOP.prototype = this.prototype;
+                fBound.prototype = new fNOP();
+
+                return fBound;
+            };
+        }
+
+
+    </script>
+
+</body>
+</html>

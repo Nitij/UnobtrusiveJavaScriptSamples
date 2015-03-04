@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <input type="text" id="txtNumber1" />
+    &nbsp;
+    <input type="text" id="txtNumber2" />
+    <br />
+    <br />
+
+    <input type="button" value="Add" add />
+    &nbsp;
+    <input type="button" value="Subtract" subtract />
+    &nbsp;
+    <input type="button" value="Multiply" multiply />
+    &nbsp;
+    <input type="button" value="Divide" divide />
+    &nbsp;
+
+    <br />
+    <br />
+    <input type="text" id="txtResult" />
+
+    <script>
+
+        var App = { 'Operations': {}, 'Inputs': {}, 'Outputs': {}, 'Commands': {}, 'Events': {} };
+
+        App.Events = {
+
+            'Add': function () {
+                App.Outputs.Result.value = App.Operations.Calculate(parseFloat(App.Inputs.Number1.value), parseFloat(App.Inputs.Number2.value), 'Add');
+            },
+
+            'Subtract': function () {
+                App.Outputs.Result.value = App.Operations.Calculate(parseFloat(App.Inputs.Number1.value), parseFloat(App.Inputs.Number2.value), 'Subtract');
+            },
+
+            'Multiply': function () {
+                App.Outputs.Result.value = App.Operations.Calculate(parseFloat(App.Inputs.Number1.value), parseFloat(App.Inputs.Number2.value), 'Multiply');
+            },
+
+            'Divide': function () {
+                App.Outputs.Result.value = App.Operations.Calculate(parseFloat(App.Inputs.Number1.value), parseFloat(App.Inputs.Number2.value), 'Divide');
+            },
+
+            'Load': function () {
+
+                App.Inputs = {
+                    'Number1': document.getElementById('txtNumber1'),
+                    'Number2': document.getElementById('txtNumber2'),
+                };
+
+                App.Outputs = {
+                    'Result': document.getElementById('txtResult')
+                };
+
+                App.Commands = {
+                    'Add': document.querySelector('[add]'),
+                    'Subtract': document.querySelector('[subtract]'),
+                    'Multiply': document.querySelector('[multiply]'),
+                    'Divide': document.querySelector('[divide]')
+                };
+                
+                App.Commands.Add.addEventListener('click', App.Events.Add);
+                App.Commands.Subtract.addEventListener('click', App.Events.Subtract);
+                App.Commands.Multiply.addEventListener('click', App.Events.Multiply);
+                App.Commands.Divide.addEventListener('click', App.Events.Divide);
+            }
+
+        };
+
+        App.Operations.Calculate = function (number1, number2, operationType) {
+            var result = 0;
+            switch (operationType.toLowerCase()) {
+                case 'add':
+                    result = number1 + number2;
+                    break;
+                case 'subtract':
+                    result = number1 - number2;
+                    break;
+                case 'multiply':
+                    result = number1 * number2;
+                    break;
+                case 'divide':
+                    result = number1 / number2;
+                    break;
+            }
+            return result;
+        };
+
+        document.addEventListener('DOMContentLoaded', App.Events.Load);
+
+    </script>
+</body>
+</html>

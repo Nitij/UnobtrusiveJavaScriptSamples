@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        .GreenBox {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            border: 2px solid black;
+            display: block;
+            background-color: green;        
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="myDiv"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', onLoad);
+
+        function onLoad() {
+            var myDiv = document.getElementById('myDiv');
+            myDiv.className = 'GreenBox';
+        }
+    </script>
+</body>
+</html>
